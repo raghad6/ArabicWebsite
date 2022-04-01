@@ -14,10 +14,13 @@ import { VideosComponent } from './videos/videos.component';
 import { VoicesComponent } from './voices/voices.component';
 import { WritingsComponent } from './writings/writings.component';
 
+import { AuthGuard } from './services/auth.guard';
+
+
 const routes: Routes = [
-  { path: 'admin-Dashboard' , component: AdminDashboardComponent},
+  { path: 'admin-Dashboard' , component: AdminDashboardComponent , canActivate: [AuthGuard] },
   { path: 'articles' , component: ArticlesComponent},
-  { path: 'dashboard' , component: DashboardComponent},
+  { path: 'dashboard' , component: DashboardComponent , canActivate: [AuthGuard] },
   { path: 'forget-pasword' , component: ForgotPasswordComponent},
   { path: 'history' , component: HistoryComponent},
   { path: 'home' , component: HomeComponent},
@@ -28,6 +31,9 @@ const routes: Routes = [
   { path: 'videos' , component: VideosComponent},
   { path: 'voices' , component: VoicesComponent},
   { path: 'writings' , component: WritingsComponent},
+  { path: '**', component: HomeComponent },                  
+
+
 ];
 
 @NgModule({
