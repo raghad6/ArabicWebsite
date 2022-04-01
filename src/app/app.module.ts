@@ -17,6 +17,9 @@ import { VoicesComponent } from './voices/voices.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { HistoryComponent } from './history/history.component';
 import { WritingsComponent } from './writings/writings.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { WritingsComponent } from './writings/writings.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]
